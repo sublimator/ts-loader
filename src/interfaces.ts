@@ -87,7 +87,7 @@ export interface TSInstance {
   hasUnaccountedModifiedFiles?: boolean;
   changedFilesList?: boolean;
 
-  solutionBuilderHost?: typescript.SolutionBuilderWithWatchHost<
+  solutionBuilderHost?: typescript.SolutionBuilderHost<
     typescript.EmitAndSemanticDiagnosticsBuilderProgram
   >;
   solutionBuilder?: typescript.SolutionBuilder<

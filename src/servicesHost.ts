@@ -543,23 +543,22 @@ export function makeSolutionBuilderHost(
     log.logError(compiler.formatDiagnostic(d, formatDiagnosticHost));
   const reportSolutionBuilderStatus = (d: typescript.Diagnostic) =>
     log.logInfo(compiler.formatDiagnostic(d, formatDiagnosticHost));
-  const reportWatchStatus = (
-    d: typescript.Diagnostic,
-    newLine: string,
-    _options: typescript.CompilerOptions
-  ) =>
-    log.logInfo(
-      `${compiler.flattenDiagnosticMessageText(
-        d.messageText,
-        compiler.sys.newLine
-      )}${newLine + newLine}`
-    );
-  const solutionBuilderHost = compiler.createSolutionBuilderWithWatchHost(
+  // const reportWatchStatus = (
+  //   d: typescript.Diagnostic,
+  //   newLine: string,
+  //   _options: typescript.CompilerOptions
+  // ) =>
+  //   log.logInfo(
+  //     `${compiler.flattenDiagnosticMessageText(
+  //       d.messageText,
+  //       compiler.sys.newLine
+  //     )}${newLine + newLine}`
+  //   );
+  const solutionBuilderHost = compiler.createSolutionBuilderHost(
     compiler.sys,
     compiler.createEmitAndSemanticDiagnosticsBuilderProgram,
     reportDiagnostic,
-    reportSolutionBuilderStatus,
-    reportWatchStatus
+    reportSolutionBuilderStatus
   );
   solutionBuilderHost.getCurrentDirectory = getCurrentDirectory;
   solutionBuilderHost.trace = logData => log.logInfo(logData);

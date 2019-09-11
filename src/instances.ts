@@ -285,7 +285,7 @@ function successfulTypeScriptInstance(
       loader,
       instance
     );
-    instance.solutionBuilder = compiler.createSolutionBuilderWithWatch(
+    instance.solutionBuilder = compiler.createSolutionBuilder(
       instance.solutionBuilderHost,
       [configFilePath],
       { verbose: true, watch: true }
